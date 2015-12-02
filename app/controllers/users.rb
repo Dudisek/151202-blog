@@ -20,7 +20,7 @@ end
 patch '/users:id' do
 	@user = User.find(params[:id])
 	user.update(name: params[:name], email: params[:email], password: params[:password], description: params[:description])
-			redirect "/users/#{user.id}"
+	redirect "/users/#{user.id}"
 end
 
 # DELETE USER
@@ -34,6 +34,15 @@ end
 get '/users/:id' do
 	@user = User.find(params[:id])
 	erb :'user/show' ### COMMON NAME: SHOW or SINGLE
-
 end
 
+# VISIT LOGIN PAGE
+get '/users' do
+	erb :'user/index'
+end
+
+# USER LOGIN
+post '/users/login' do
+	user = User.find_by(email: params[:email], password: params[:password])
+	redirect "/users/#{user.id}"
+end
