@@ -1,0 +1,12 @@
+<h1>Create Profile</h1>
+
+Name: <%= @user.name %> <br>
+Email: <%= @user.email %> <br>
+Description: <%= @user.descriptin %><br> 
+
+<a href="/users/<%= @user.id %>/edit">Edit profile</a>
+
+
+	<form action="/users/<%= @user.id %>">
+		<label>Name: </label>
+		<input type="text" name="name"
